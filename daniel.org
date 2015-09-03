@@ -106,9 +106,6 @@
 ;; Auto-reload buffers when they change
 (global-auto-revert-mode 1)
 
-;; Set default font and size
-(set-default-font "Inconsolata 16")
-
 ;; Highlights current line
 (global-hl-line-mode 1)
 
@@ -230,7 +227,6 @@
 (setq ac-auto-show-menu 0.01)
 (setq ac-delay 0.01)
 
-(add-to-list 'load-path "/home/daniel/.emacs.d/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "/home/daniel/.emacs.d//ac-dict")
 (ac-config-default)
@@ -401,8 +397,6 @@
    #+end_src
 
 ** dev
-
-
 #+begin_src emacs-lisp
 (defun dev-frame-title (title)
   "Set frame title to:- title + ": " + full file path for current buffer."
@@ -492,6 +486,7 @@
   (interactive "FLoad js files in: ")
   (cd js_path)
   (find-file "*.js" "wildcards")
+)
 #+end_src
 
 ** Disable Linum for some modes such as shell
