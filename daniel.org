@@ -636,7 +636,17 @@
 
 #+end_src
 
-
+* Clipboard
+#+begin_src emacs-lisp
+ (setq x-select-enable-clipboard t
+        x-select-enable-primary t
+        save-interprogram-paste-before-kill t
+        apropos-do-all t
+        mouse-yank-at-point t
+        mouse-drag-copy-region t
+        x-selection-timeout 50
+       )
+#+end_src
 * TODO
 
 Unsorted stuff dumped in from my existing .emacs file
@@ -693,16 +703,7 @@ Unsorted stuff dumped in from my existing .emacs file
   (show-paren-mode 1)
   (setq-default indent-tabs-mode nil)
 
-  (setq x-select-enable-clipboard nil
-        x-select-enable-primary t
-        mouse-drag-copy-region t
-       )
-
-  ;;(setq x-select-enable-clipboard t
-  ;;      x-select-enable-primary t
-  ;;      save-interprogram-paste-before-kill t
-  ;;      apropos-do-all t
-  ;;      mouse-yank-at-point t
+  ;;(setq
   ;;      require-final-newline t
   ;;      visible-bell t
   ;;      ediff-window-setup-function 'ediff-setup-windows-plain
