@@ -146,26 +146,28 @@
   (remq 'process-kill-buffer-query-function
         kill-buffer-query-functions))
 #+end_src
+
 ** Backup files
 #+begin_src emacs-lisp
+(defconst emacs-tmp-dir (format "%s%s/" user-emacs-directory "tmp"))
 ;; puts backup files into temp directory rather than cluttering up file tree
-;;(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+(setq backup-directory-alist `(("." . , emacs-tmp-dir)))
 
 ;; stop emacs creating backup files
-(setq make-backup-files nil)
+;;(setq make-backup-files nil)
 
 #+end_src
 
 ** Auto Save files
 #+begin_src emacs-lisp
 ;; puts auto save files into temp directory rather than cluttering up file tree
-;;(setq auto-save-file-name-transforms `((".*", (concat user-emacs-directory "auto-save"))))
+(setq auto-save-file-name-transforms `((".*", emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix emacs-tmp-dir)
 
 ;; stop emacs creating auto save files
-(setq auto-save-default nil)
+;;(setq auto-save-default nil)
 
 #+end_src
-
 
 * Cua-mode
 
@@ -188,30 +190,30 @@
 * Ido
 
 #+begin_src emacs-lisp
-(require 'ido)
-(ido-mode 'both)
-(setq
-    ido-enable-flex-matching t
-    ido-use-virtual-buffers t
-    ido-create-new-buffer 'always
-    find-file-wildcards t
-    ido-max-prospects 10
-    ido-ignore-extensions t
-    ido-file-extensions-order '(".tcl" ".scss" ".css" ".md" ".org" ".txt" ".emacs")
-    ido-ignore-directories '(".sass-cache/load")
-    ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "^TAGS$" "*DS_Store" "*.map")
-    ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
-    ido-ignore-buffers '("^TAGS$" "\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace" "^\*compilation" "^\*TAGS" "^session\.*" "^\*")
-)
+;;(require 'ido)
+;;(ido-mode 'both)
+;;(setq
+;;    ido-enable-flex-matching t
+;;    ido-use-virtual-buffers t
+;;    ido-create-new-buffer 'always
+;;    find-file-wildcards t
+;;    ido-max-prospects 10
+;;    ido-ignore-extensions t
+;;    ido-file-extensions-order '(".tcl" ".scss" ".css" ".md" ".org" ".txt" ".emacs")
+;;    ido-ignore-directories '(".sass-cache/load")
+;;    ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "^TAGS$" "*DS_Store" "*.map")
+;;    ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
+;;    ido-ignore-buffers '("^TAGS$" "\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace" "^\*compilation" "^\*TAGS" "^session\.*" "^\*")
+;;)
 
 ;; http://www.reddit.com/r/emacs/comments/21a4p9/use_recentf_and_ido_together/cgbprem
-(add-hook 'ido-setup-hook (lambda () (define-key ido-completion-map [up] 'previous-history-element)))
+;;(add-hook 'ido-setup-hook (lambda () (define-key ido-completion-map [up] 'previous-history-element)))
 
-(require 'flx-ido)
-(ido-everywhere 1)
-(flx-ido-mode 1)
+;;(require 'flx-ido)
+;;(ido-everywhere 1)
+;;(flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
-(setq ido-use-faces nil)
+;;(setq ido-use-faces nil)
 
 #+end_src
 
@@ -235,8 +237,8 @@
 ;;(add-to-list 'ac-modes 'javascript-mode)
 ;;(add-to-list 'ac-modes 'css-mode)
 
-;;(setq ac-auto-show-menu 0.00)
-;;(setq ac-delay 0.00)
+;;(setq ac-auto-show-menu 0.01)
+;;(setq ac-delay 0.01)
 #+end_src
 
 * Undo-tree-mode
