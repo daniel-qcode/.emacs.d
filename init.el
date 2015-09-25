@@ -24,7 +24,7 @@
 (scroll-bar-mode -1)
 
 ;; Enable line numbers
-(global-linum-mode 1)
+;;(global-linum-mode 1)
 
 ;; Offset the number to work around some weird fringe glitch
 ;;(setq linum-format "%d  ")
@@ -355,11 +355,15 @@
       x-select-enable-primary t
       x-select-enable-clipboard-manager t
       save-interprogram-paste-before-kill t
+      select-active-regions t
+      x-select-enable-primary t
       apropos-do-all t
       mouse-yank-at-point t
       mouse-drag-copy-region t
-      x-selection-timeout 500
+      x-selection-timeout 300
       )
+ ; make mouse middle-click only paste from primary X11 selection, not clipboard and kill ring.
+(global-set-key [mouse-2] 'mouse-yank-primary) 
 
 (setq current-language-environment "UTF-8")
 
@@ -413,7 +417,9 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes nil))
+ '(custom-enabled-themes nil)
+ '(show-paren-mode t)
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
