@@ -347,8 +347,8 @@
 (global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
 
 ;; shortcut to skip to next/previous buffer
-(global-set-key (kbd "M-<prior>") 'next-buffer)
-(global-set-key (kbd "M-<next>") 'previous-buffer)
+(global-set-key (kbd "M-<prior>") 'previous-buffer)
+(global-set-key (kbd "M-<next>") 'next-buffer)
 
 ;; clipboard
 (setq x-select-enable-clipboard t
@@ -411,7 +411,9 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (tango-dark))))
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
